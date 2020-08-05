@@ -19,10 +19,9 @@ import javax.validation.constraints.Size;
 @Entity
 public class Employee {
 	
-	
-	@Id
+	@Id    
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GeneratorName")
-    @SequenceGenerator(name="GeneratorName", sequenceName = "seq1")
+    @SequenceGenerator(name="GeneratorName", sequenceName = "seq1",allocationSize = 1)
 	private Integer id;
 	@NotBlank(message = "{validation.name.notBlank}")
 	@Size(max = 20,message = "{validation.name.size}")

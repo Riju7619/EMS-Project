@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "GeneratorName2")
-    @SequenceGenerator(name="GeneratorName2", sequenceName = "seq2")
+    @SequenceGenerator(name="GeneratorName2", sequenceName = "seq2",allocationSize = 1)
     private Integer id;
     @NotBlank(message = "{validation.username.notBlank}")
 	@Size(max = 50)
