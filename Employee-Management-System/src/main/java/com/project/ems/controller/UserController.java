@@ -66,11 +66,11 @@ public class UserController {
 	
 	@PostMapping("/saveUser")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public User addUser(@Valid @RequestBody User e) {
+	public String addUser(@Valid @RequestBody User e) {
 		String role = e.getRoles();
 		if (role.equals("ROLE_USER") || role.equals("ROLE_ADMIN")) {
 			repo.save(e);
-			return e;
+			return "Successfully Added";
 		} else
 			throw new RoleException("Role must be 'ROLE_USER' or 'ROLE_ADMIN'");
 

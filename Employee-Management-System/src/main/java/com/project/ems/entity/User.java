@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "GeneratorName2")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GeneratorName2")
     @SequenceGenerator(name="GeneratorName2", sequenceName = "seq2",allocationSize = 1)
     private Integer id;
     @NotBlank(message = "{validation.username.notBlank}")
