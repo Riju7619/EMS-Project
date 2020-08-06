@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.ems.dao.EmployeeRepository;
-import com.project.ems.dao.EmployeeUpdateRepository;
+
 import com.project.ems.entity.Employee;
 import com.project.ems.exception.EmployeeNotFoundException;
 import com.project.ems.exception.IdNotFoundException;
@@ -38,8 +38,7 @@ public class EmployeeController {
 	
 	@Autowired
 	EmployeeRepository repo;
-	@Autowired
-	EmployeeUpdateRepository repoUpdate;
+	
 	
 	@GetMapping("/getAllEmployees") 
 	@PreAuthorize(" hasRole('ROLE_ADMIN')")
@@ -93,7 +92,7 @@ public class EmployeeController {
 		if(id!=null) {
 		Optional<Employee>emp=repo.findById(id);
 		if(emp.isPresent()) {
-		 repoUpdate.save(e);
+		 repo.save(e);
 		 return "Successfully updated";
 		}
 		else

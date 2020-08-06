@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.project.ems.dao.UserRepository;
-import com.project.ems.dao.UserUpdateRepository;
+
 
 import com.project.ems.entity.User;
 
@@ -42,8 +42,7 @@ public class UserController {
 	
 	@Autowired
 	UserRepository repo;
-	@Autowired
-	UserUpdateRepository repoUpdate;
+	
 	@GetMapping("/getAllUsers") 
 	@PreAuthorize(" hasRole('ROLE_ADMIN')")
 	public List<User> getUsers(@RequestParam("page_no") Integer page_no, @RequestParam("page_size") Integer page_size)
@@ -103,7 +102,7 @@ public class UserController {
 		String role=e.getRoles();
 		if(role.equals("ROLE_USER")||role.equals("ROLE_ADMIN"))
 		{
-			repoUpdate.save(e);
+			repo.save(e);
 			 return "Successfully updated";
 		}
 		else {
