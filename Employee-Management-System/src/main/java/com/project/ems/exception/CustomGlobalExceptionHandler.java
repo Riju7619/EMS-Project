@@ -30,7 +30,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 	public ResponseEntity<Object> handleConstraintViolation(PersistenceException ex, WebRequest request) 
 	{ if (ex instanceof ConstraintViolationException) { 
 		ConstraintViolationException consEx = (ConstraintViolationException) ex;
-		CustomErrorDetails customeErrorDetails=new CustomErrorDetails(new Date(), "Some field must be unique like-email,phone,username!!", consEx.getMessage());
+		CustomErrorDetails customeErrorDetails=new CustomErrorDetails(new Date(), "Some field must be unique!!!", consEx.getMessage());
 		return new ResponseEntity<>(customeErrorDetails,HttpStatus.BAD_REQUEST);
 	}
 	return null;
