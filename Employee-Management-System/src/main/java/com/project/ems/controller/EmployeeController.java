@@ -66,7 +66,7 @@ public class EmployeeController {
 	public String addEmployee(@Valid @RequestBody Employee e) 
 	{
 		 repo.save(e);
-		 return "Successfull added";
+		 return "Successfully added";
 		}
 	
 	@DeleteMapping("/removeEmployee/{id}")
